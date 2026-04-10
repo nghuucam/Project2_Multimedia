@@ -42,8 +42,6 @@
 * **Môi trường:** Ubuntu
 * **Công nghệ:** Asterisk
 
-## CHỨC NĂNG HỆ THỐNG
-<a name="chucnang"></a>
 ## CHI TIẾT CẤU HÌNH HỆ THỐNG TỔNG ĐÀI
 <a name="chitiet"></a>
 ### 1. Danh sách Extension (Số nội bộ)
