@@ -12,7 +12,7 @@
 * [Thành viên nhóm](#thanhvien)
 * [Đồ án môn học](#doan)
 * [Công nghệ sử dụng](#congnghe)
-* [Chức năng hệ thống](#chucnang)
+* [Chi tiết cấu hình hệ thống tổng đài](#chitiet)
 * [Cài đặt và Triển khai](#caidat)
 
 ## GIỚI THIỆU MÔN HỌC
