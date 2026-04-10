@@ -44,12 +44,6 @@
 
 ## CHỨC NĂNG HỆ THỐNG
 <a name="chucnang"></a>
-Chào Cam, dựa trên những yêu cầu chi tiết về kịch bản tổng đài (IVR) và phân bổ extension mà bạn vừa cung cấp, mình đã hệ thống lại thành một tài liệu hướng dẫn cấu hình chuyên nghiệp. 
-
-Bạn có thể dùng nội dung này để đưa vào báo cáo hoặc làm tài liệu hướng dẫn triển khai cho Asterisk:
-
----
-
 ## CHI TIẾT CẤU HÌNH HỆ THỐNG TỔNG ĐÀI
 
 ### 1. Danh sách Extension (Số nội bộ)
