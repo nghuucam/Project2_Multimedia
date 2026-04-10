@@ -45,7 +45,7 @@
 ## CHỨC NĂNG HỆ THỐNG
 <a name="chucnang"></a>
 ## CHI TIẾT CẤU HÌNH HỆ THỐNG TỔNG ĐÀI
-
+<a name="chitiet"></a>
 ### 1. Danh sách Extension (Số nội bộ)
 Hệ thống phân chia theo các phòng ban với hai giao thức **SIP** và **IAX** như sau:
 
@@ -101,15 +101,6 @@ Khi khách hàng gọi vào số **0952014301**, hệ thống Asterisk sẽ kíc
     * Sau tiếng "píp", hệ thống tự động ghi âm và chuyển vào **VoiceMail** của Ext **5015**.
 
 * **Phím 5:** Lặp lại lời chào chính.
-
----
-
-### Gợi ý cho Cam khi viết file `extensions.conf`:
-Đối với yêu cầu phím 1 (đổ chuông đồng loạt) và phím 2 (đổ chuông lần lượt), bạn nhớ sử dụng lệnh `Dial` với dấu `&` cho phím 1. Ví dụ:
-* **Phím 1:** `Dial(SIP/8010&IAX2/8016&SIP/8018, 20)`
-* **Phím 2:** `Dial(IAX2/7011, 10)` tiếp đến `Dial(SIP/7012, 10)`
-
-Bạn có cần mình hỗ trợ viết đoạn code mẫu cho file `extensions.conf` để thực hiện kịch bản IVR này không?
 
 ## CÀI ĐẶT VÀ TRIỂN KHAI
 <a name="caidat"></a>
