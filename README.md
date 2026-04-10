@@ -1,5 +1,48 @@
-# Đồ án 2 - Truyền thông đa phương tiện
-Cấu trúc dự án gồm 2 phần:
-- Máy ảo 1 (Công ty): Xử lí các cuộc gọi từ công ty ra ngoài và từ công ty đi ra, đồng thời các máy gọi nội bộ bên trong.
-- Máy ảo 2 : Mô phỏng người dùng đến từ bên ngoài. Dùng để mô phỏng người dùng khi gọi từ bên ngoài vào công tin.
-* Lưu ý: Các số điện thoại được cài đặt theo kịch bản được gợi ý trong course.
+<p align="center">
+  <a href="https://www.uit.edu.vn/" title="Trường Đại học Công nghệ Thông tin" style="border: none;">
+    <img src="https://i.imgur.com/WmMnSRt.png" alt="Trường Đại học Công nghệ Thông tin | University of Information Technology">
+  </a>
+</p>
+
+<h1 align="center"><b>PHÁT TRIỂN ỨNG DỤNG TRÊN THIẾT BỊ DI ĐỘNG</b></h1>
+
+## BẢNG MỤC LỤC
+* [Giới thiệu môn học](#gioithieumonhoc)
+* [Giảng viên hướng dẫn](#giangvien)
+* [Thành viên nhóm](#thanhvien)
+* [Đồ án môn học](#doan)
+* [Công nghệ sử dụng](#congnghe)
+* [Chức năng hệ thống](#chucnang)
+* [Cài đặt và Triển khai](#caidat)
+
+## GIỚI THIỆU MÔN HỌC
+<a name="gioithieumonhoc"></a>
+* **Tên môn học**: Truyền thông đa phương tiện
+* **Mã môn học**: NT536
+* **Lớp học**: NT536.Q11
+
+## GIẢNG VIÊN HƯỚNG DẪN
+<a name="giangvien"></a>
+* ThS. **Đỗ thị Hương Lan** - *@uit.edu.vn*
+
+## THÀNH VIÊN NHÓM
+<a name="thanhvien"></a>
+| STT | MSSV | Họ và Tên | Github | Email | 
+| --- | --- | --- | --- | --- | 
+| 1 | 23520164 | Nguyễn Hữu Cảm| [nghuucam](https://github.com/nghuucam) | 23520164@gm.uit.edu.vn | 
+
+## ĐỒ ÁN MÔN HỌC
+<a name="doan"></a>
+**Tên đề tài:** 
+
+**Mô tả:**
+
+## CÔNG NGHỆ SỬ DỤNG
+<a name="congnghe"></a>
+* **Công cụ:** Android Studio, Figma, Git/GitHub.
+
+## CHỨC NĂNG HỆ THỐNG
+<a name="chucnang"></a>
+
+## CÀI ĐẶT VÀ TRIỂN KHAI
+<a name="caidat"></a>
