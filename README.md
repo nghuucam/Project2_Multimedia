@@ -60,19 +60,24 @@ o Phòng bán hàng : ext. 8010 (SIP), ext 8016 (IAX), ext 8018 (SIP)
 - Phải thêm số 9 trước số cần gọi để liên lạc ra ngoài công ty.
 4. Liên lạc từ ngoài vào trong
 − Khi cuộc gọi từ ngoài đến số public của công ty thì hệ thống asterisk sẽ phát sinh thông điệp “Chào mừng gọi đến công ty ABC, vui lòng nhấn phím 1 để kết nối với phòng bán hàng, nhấn phím 2 để được hỗ trợ về kỹ thuật, nhấn phím 3 để biết thông tin tuyển dụng, nhấn phím 4 để để lại lời nhắn hay góp ý cho Ban Giám Đốc, nhấn phím 5 để nghe lại lời chào” sau đó tùy theo lựa chọn của khách hàng mà thực hiện các thao tác sau đây :
+
 − Người dùng nhấn phím 1:
 o Phát thông điệp “Chào mừng bạn đã đến phòng bán hàng, vui lòng đợi trong giây lát để được kết nối với điện thoại viên”.
 o Các số ext trong phòng bán hàng sẽ đồng loạt rung chuông.
 o Nếu không có điện thoại viên nào nhấc máy, phát thông điệp “Xin lỗi hiện tại các điện thoại viên đều bận, vui lòng để lại lời nhắn sau tiếng pip hoặc thực hiện lại cuộc gọi”
+
 − Người dùng nhấn phím 2:
 o Quay số đến phòng kỹ thuật. Các số ext trong phòng kỹ thuật sẽ lần lượt rung chuông cho đến khi có kỹ thuật viên nhấc máy.
 o Nếu không có điện thoại viên nào nhấc máy, phát thông điệp “Xin lỗi hiện tại các kỹ thuật viên đều bận, vui lòng chờ trong giây lát để thực hiện lại cuộc gọi”
+
 − Người dùng nhấn phím 3: quay số đến phòng nhân sự.
+
 − Người dùng nhấn phím 4:
 o Phát thông điệp “ Xin chân thành cảm ơn bạn đã góp ý cho công ty chúng tôi, vui lòng để lại lời nhắn sau tiếng pip”.
 o Phát sinh âm “pip” và bắt đầu ghi lại nội dung lời nhắn vào hộp thư thoại của phòng giám đốc.
 − Khi người dùng nhấn phím 5:
 o Phát lại thông điệp chào mừng như khi mới gọi vào công t
+
 ## CÀI ĐẶT VÀ TRIỂN KHAI
 <a name="caidat"></a>
 Đối với Máy ảo 1: 
