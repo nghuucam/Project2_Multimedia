@@ -44,39 +44,78 @@
 
 ## CHỨC NĂNG HỆ THỐNG
 <a name="chucnang"></a>
-1. Tạo các số extension
-− Công ty gồm 4 phòng ban :
-o Phòng Giám đốc : ext. 5015 (IAX)
-o Phòng nhân sự : ext. 6016 (SIP)
-o Phòng kỹ thuật : ext. 7011 (IAX), ext. 7012 (SIP)
-o Phòng bán hàng : ext. 8010 (SIP), ext 8016 (IAX), ext 8018 (SIP)
-− Số điện thoại 0951000001 là số điện thoại ở ngoài công ty. XX là số nhóm
-− Số điện thoại 0952014301 là số điện thoại public của công ty (ở ngoài muốn gọi đến các số nội bộ của công ty phải gọi qua số này).
-− Số ext. 4014 là số nội bộ của công ty được dùng khi cần họp toàn công ty thông qua mạng điện thoại với password quản lý và gia nhập lần lược là : 123456 và 654321
-2. Liên lạc nội bộ
-− Kết nối cho các số nội bộ trong công ty liên lạc bình thường.
-− Có thể họp nội bộ công ty qua điện thoại giữa tất cả các phòng.
-3. Liên lạc từ trong ra ngoài
-- Phải thêm số 9 trước số cần gọi để liên lạc ra ngoài công ty.
-4. Liên lạc từ ngoài vào trong
-− Khi cuộc gọi từ ngoài đến số public của công ty thì hệ thống asterisk sẽ phát sinh thông điệp “Chào mừng gọi đến công ty ABC, vui lòng nhấn phím 1 để kết nối với phòng bán hàng, nhấn phím 2 để được hỗ trợ về kỹ thuật, nhấn phím 3 để biết thông tin tuyển dụng, nhấn phím 4 để để lại lời nhắn hay góp ý cho Ban Giám Đốc, nhấn phím 5 để nghe lại lời chào” sau đó tùy theo lựa chọn của khách hàng mà thực hiện các thao tác sau đây :
+Chào Cam, dựa trên những yêu cầu chi tiết về kịch bản tổng đài (IVR) và phân bổ extension mà bạn vừa cung cấp, mình đã hệ thống lại thành một tài liệu hướng dẫn cấu hình chuyên nghiệp. 
 
-− Người dùng nhấn phím 1:
-o Phát thông điệp “Chào mừng bạn đã đến phòng bán hàng, vui lòng đợi trong giây lát để được kết nối với điện thoại viên”.
-o Các số ext trong phòng bán hàng sẽ đồng loạt rung chuông.
-o Nếu không có điện thoại viên nào nhấc máy, phát thông điệp “Xin lỗi hiện tại các điện thoại viên đều bận, vui lòng để lại lời nhắn sau tiếng pip hoặc thực hiện lại cuộc gọi”
+Bạn có thể dùng nội dung này để đưa vào báo cáo hoặc làm tài liệu hướng dẫn triển khai cho Asterisk:
 
-− Người dùng nhấn phím 2:
-o Quay số đến phòng kỹ thuật. Các số ext trong phòng kỹ thuật sẽ lần lượt rung chuông cho đến khi có kỹ thuật viên nhấc máy.
-o Nếu không có điện thoại viên nào nhấc máy, phát thông điệp “Xin lỗi hiện tại các kỹ thuật viên đều bận, vui lòng chờ trong giây lát để thực hiện lại cuộc gọi”
+---
 
-− Người dùng nhấn phím 3: quay số đến phòng nhân sự.
+## CHI TIẾT CẤU HÌNH HỆ THỐNG TỔNG ĐÀI
 
-− Người dùng nhấn phím 4:
-o Phát thông điệp “ Xin chân thành cảm ơn bạn đã góp ý cho công ty chúng tôi, vui lòng để lại lời nhắn sau tiếng pip”.
-o Phát sinh âm “pip” và bắt đầu ghi lại nội dung lời nhắn vào hộp thư thoại của phòng giám đốc.
-− Khi người dùng nhấn phím 5:
-o Phát lại thông điệp chào mừng như khi mới gọi vào công t
+### 1. Danh sách Extension (Số nội bộ)
+Hệ thống phân chia theo các phòng ban với hai giao thức **SIP** và **IAX** như sau:
+
+| Phòng ban | Extension | Giao thức | Ghi chú |
+| :--- | :--- | :--- | :--- |
+| **Giám đốc** | 5015 | IAX | Nhận VoiceMail từ khách hàng |
+| **Nhân sự** | 6016 | SIP | Nhận cuộc gọi hỗ trợ tuyển dụng |
+| **Kỹ thuật** | 7011, 7012 | IAX, SIP | Đổ chuông xoay vòng (Round-robin) |
+| **Bán hàng** | 8010, 8016, 8018 | SIP, IAX, SIP | Đổ chuông đồng loạt (Ring-all) |
+| **Họp nội bộ** | **4014** | - | Password: Admin (123456), User (654321) |
+
+**Thông tin số thuê bao bên ngoài:**
+* **Số bên ngoài:** `0951000001` (Dùng để giả lập cuộc gọi vào/ra).
+* **Số Public của Công ty:** `0952014301` (Đầu số tiếp nhận IVR).
+
+---
+
+### 2. Kịch bản Liên lạc nội bộ & Hội nghị
+* **Liên lạc thông thường:** Các số nội bộ (501, 601, 701, 801) có quyền gọi trực tiếp cho nhau.
+* **Hội nghị (MeetMe/ConfBridge):** * Tất cả nhân viên truy cập số **4014** để họp.
+    * Yêu cầu nhập mã PIN: `654321` cho nhân viên và `123456` cho người quản lý.
+
+---
+
+### 3. Liên lạc ra mạng ngoài (Outbound Call)
+Để thực hiện cuộc gọi ra ngoài công ty (ví dụ gọi số `0951000001`), người dùng phải tuân thủ quy tắc quay số:
+> **Cú pháp:** `9` + `[Số điện thoại cần gọi]`
+> *Ví dụ: Quay 90951000001 để gọi ra ngoài.*
+
+---
+
+### 4. Kịch bản Tương tác tự động (IVR)
+Khi khách hàng gọi vào số **0952014301**, hệ thống Asterisk sẽ kích hoạt lời chào và xử lý theo các phím bấm:
+
+#### Lời chào chính (Main Menu):
+*"Chào mừng gọi đến công ty ABC, vui lòng nhấn phím 1 để kết nối với phòng bán hàng, nhấn phím 2 để được hỗ trợ về kỹ thuật, nhấn phím 3 để biết thông tin tuyển dụng, nhấn phím 4 để để lại lời nhắn hay góp ý cho Ban Giám Đốc, nhấn phím 5 để nghe lại lời chào."*
+
+#### Xử lý phím bấm:
+
+* **Phím 1 (Phòng Bán hàng):**
+    * Phát thông báo: *"Chào mừng bạn đã đến phòng bán hàng, vui lòng đợi trong giây lát..."*
+    * **Cơ chế:** Đổ chuông đồng loạt tất cả máy (8010, 8016, 8018).
+    * **Nếu bận/Không nhấc máy:** Phát thông báo yêu cầu để lại lời nhắn hoặc gọi lại sau.
+
+* **Phím 2 (Phòng Kỹ thuật):**
+    * **Cơ chế:** Đổ chuông lần lượt (Linear/Round-robin) qua các số 7011, 7012.
+    * **Nếu bận:** Thông báo kỹ thuật viên đang bận và mời chờ để thực hiện lại cuộc gọi.
+
+* **Phím 3 (Phòng Nhân sự):** Kết nối trực tiếp đến Ext **6016**.
+
+* **Phím 4 (Góp ý cho Giám đốc):**
+    * Phát lời cảm ơn.
+    * Sau tiếng "píp", hệ thống tự động ghi âm và chuyển vào **VoiceMail** của Ext **5015**.
+
+* **Phím 5:** Lặp lại lời chào chính.
+
+---
+
+### Gợi ý cho Cam khi viết file `extensions.conf`:
+Đối với yêu cầu phím 1 (đổ chuông đồng loạt) và phím 2 (đổ chuông lần lượt), bạn nhớ sử dụng lệnh `Dial` với dấu `&` cho phím 1. Ví dụ:
+* **Phím 1:** `Dial(SIP/8010&IAX2/8016&SIP/8018, 20)`
+* **Phím 2:** `Dial(IAX2/7011, 10)` tiếp đến `Dial(SIP/7012, 10)`
+
+Bạn có cần mình hỗ trợ viết đoạn code mẫu cho file `extensions.conf` để thực hiện kịch bản IVR này không?
 
 ## CÀI ĐẶT VÀ TRIỂN KHAI
 <a name="caidat"></a>
